@@ -12,18 +12,20 @@ class Button {
     this.action = action;
   }
 
-  checkClicked(mX, mY){
-    if(mX < this.x + this.width && mX >= this.x && mY >= this.y && mY < this.y + this.height){
+  checkClicked(){
+    if(mouseX < this.x + this.width && mouseX >= this.x && mouseY >= this.y
+      && mouseY < this.y + this.height){
       this.action();
     }
   }
 
   checkHover(mX, mY){
-    return mX < this.x + this.width && mX >= this.x && mY >= this.y && mY < this.y + this.height;
+    return mouseX < this.x + this.width && mouseX >= this.x && mouseY >= this.y
+    && mouseY < this.y + this.height;
   }
 
   display(){
-    if(this.checkHover(mouseX, mouseY)){
+    if(this.checkHover()){
       fill(this.hoverColor[0], this.hoverColor[1], this.hoverColor[2]);
     }
     else{
