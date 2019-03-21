@@ -1,33 +1,29 @@
 
 var cities = [];
 var shortest = [];
+var b;
 
 function setup() {
   createCanvas(400,400);
-
+  b = new Button(0, height-30, 70, 30, "Brute Force", 10, [20,186,34],
+      [10, 176, 24], permute);
 
 }
 
 function draw() {
   background(170);
-  fill(20,186,34);
+  b.display();
   noStroke();
-  rect(0, height-30, 80, 30);
-  fill(0);
-  text("Brute force", 5, height-10);
   for(var i = 0; i < cities.length; i++){
     cities[i].show();
   }
   drawPath(shortest);
-  //ellipse(10,10,10,10);
 }
 
 function mouseClicked() {
-  if(mouseX < 80 && mouseY > height-30){
-    permute(cities);
-  }
-  else{
-    if(!(mouseX > width-1 || mouseX < 0 || mouseY > height-1 || mouseY < 0)){
+  b.checkClicked(mouseX, mouseY)
+  if(!(mouseX > width-1 || mouseX < 0 || mouseY > height-1 || mouseY < 0)){
+    if(!b.checkHover(mouseX, mouseY)){
       cities.push(new City(mouseX, mouseY));
     }
   }

@@ -6,6 +6,7 @@ class City {
   }
 
   show() {
+    fill(0);
     ellipse(this.x, this.y, 10, 10);
   }
 
