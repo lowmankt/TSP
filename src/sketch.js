@@ -17,11 +17,11 @@ function draw() {
   noStroke();
 
   textAlign(LEFT);
-  text("Cities: "+cities.length, 10, 15);
+  text("Cities: " + cities.length, 10, 15);
 
   if (shortest.length > 1) {
-    text("Distance: "+calcDistance(shortest), 10, 30);
-    text("Time: "+time+"ms", 10, 45);
+    text("Distance: " + calcDistance(shortest), 10, 30);
+    text("Time: " + time / 1000 + " secs", 10, 45);
   }
 
   for (var i = 0; i < cities.length; i++) {
