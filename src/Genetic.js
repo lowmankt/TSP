@@ -11,10 +11,14 @@ class Genetic {
     this.generations = generations;
     this.population = population;
     this.paths = [];
+    console.log(this.generations);
+  }
+
+  getGens(){
+    return this.generations;
   }
 
   selectAndMutate(){
-
     this.paths = this.paths.sort(this.comparePaths);
     let topPaths = [];
     for(let i = 0; i < this.population/2; i++){

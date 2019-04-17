@@ -9,6 +9,7 @@ var time = 0;
 function setup() {
   createCanvas(600, 600);
   buttonSetup();
+  console.log(shortest);
 }
 
 function draw() {
@@ -91,14 +92,17 @@ function drawPath(input) {
 //SOLVING
 
 function train(){
-  let gen = new Genetic(cities, 1000, 100);
-  for(let i = 0; i < gen.genetations; i++){
-
-    gen.paths = selectAndMutate();
-
+  t0 = window.performance.now();
+  let gen = new Genetic(cities, 1000, 20);
+  gen.populatePaths();
+  console.log(gen);
+  for(let i = 0; i < gen.getGens(); i++){
+    console.log("worksin");
+    gen.paths = gen.selectAndMutate();
   }
   shortest = gen.paths[0];
-
+  t1 = window.performance.now();
+  time = t1 - t0;
 }
 
 function nearestNeighbor() {
