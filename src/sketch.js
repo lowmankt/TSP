@@ -37,6 +37,8 @@ function buttonSetup() {
     [10, 176, 24], permute));
   buttons.push(new Button(110, height - 40, 100, 40, "Nearest Neighbor", 10, [20, 186, 34],
     [10, 176, 24], nearestNeighbor));
+  buttons.push(new Button(220, height - 40, 100, 40, "Genetic Algorithm", 10, [20, 186, 34],
+    [10, 176, 24], train));
 }
 
 function buttonDisplay() {
@@ -87,6 +89,17 @@ function drawPath(input) {
 }
 
 //SOLVING
+
+function train(){
+  let gen = new Genetic(cities, 1000, 100);
+  for(let i = 0; i < gen.genetations; i++){
+
+    gen.paths = selectAndMutate();
+
+  }
+  shortest = gen.paths[0];
+
+}
 
 function nearestNeighbor() {
   t0 = window.performance.now();
